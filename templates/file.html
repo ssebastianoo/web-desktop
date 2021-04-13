@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{{user}}</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="file">
+        <h3>{{ path }}</h3>
+        <div class="text">
+          <a id="text">{{ text }}</a>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var text = document.getElementById("text").innerHTML;
+      var replaced = text.replace(/\n/g, "<br>");
+      document.getElementById("text").innerHTML = replaced;
+    </script>
+  </body>
+</html>

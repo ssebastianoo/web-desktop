@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{{user}}</title>
+  </head>
+  <body>
+    <div class="container">
+    {% for file in files %}
+      <div class="item">
+        <a href="/?path={{ path }}/{{ file }}">{{ file }}</a>
+      </div>
+    {% endfor %}
+    </div>
+  </body>
+</html>
