@@ -3,14 +3,74 @@
   <head>
     <meta charset="utf-8">
     <title>{{user}}</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="A web desktop">
+    <meta name="keywords" content="desktop, linux, flask">
+    <meta name="author" content="ssebastianoo">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+    @font-face {
+	     font-family: 'ubuntu';
+       src: url('static/Ubuntu-Regular.ttf'); /* IE9 Compat Modes */
+       src: url('static/Ubuntu-Regular.ttf') format('embedded-opentype'), /* IE6-IE8 */
+       url('static/Ubuntu-Regular.ttf') format('woff2'), /* Super Modern Browsers */
+       url('static/Ubuntu-Regular.ttf') format('woff'), /* Pretty Modern Browsers */
+       url('static/Ubuntu-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+     }
+
+      body {
+          background: #3e3f40;
+          font-family: ubuntu;
+      }
+
+      .item {
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 30px;
+        text-align: center;
+        float: left;
+        transition-duration: .5s;
+      }
+
+      .item a {
+        text-decoration: none;
+      }
+
+      .item-parent {
+        align-items: center;
+      }
+
+      .item p {
+        color: white;
+        font-size: 20px;
+        max-width: 100px;
+      }
+
+      .folder-img {
+        width: 100px;
+        transition-duration: .5s;
+      }
+
+      .item-href:hover > .folder-img {
+        content:url("/static/assets/folder-hover.png");
+      }
+    </style>
   </head>
   <body>
     <div class="container">
-    {% for file in files %}
-      <div class="item">
-        <a href="/?path={{ path }}/{{ file }}">{{ file }}</a>
+      <div class="items">
+        {% for file in files %}
+          <div class="item-parent">
+            <div class="item">
+              <a href="/?path={{ path }}/{{ file }}" class="item-href">
+                <img class="folder-img" src="/static/assets/folder.png" alt="folder"><br>
+                <p class="folder-text">{{ file }}</p>
+              </a>
+            </div>
+          </div>
+        {% endfor %}
       </div>
-    {% endfor %}
     </div>
   </body>
 </html>

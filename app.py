@@ -29,7 +29,11 @@ dsk.path = dsk.desktop_path
 @app.route("/")
 def index():
     try: path = request.args['path']
-    except KeyError: return redirect(f"/?path={dsk.desktop_path}")
+    except KeyError: return redirect(f"/?path=/")
+
+    if path.startswith("//"):
+        path = path[1:]
+        return redirect(f"/?path={path}")
 
     folder = dsk.check_folder(path)
     if folder:
@@ -42,4 +46,4 @@ def index():
         f.close()
         return render_template("file.html", text=text, user=dsk.user, path=path)
 
-app.run("0.0.0.0", port=3000)
+app.run("0.0.0.0", port=3000, debug=True)
